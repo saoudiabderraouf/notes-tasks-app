@@ -1,11 +1,12 @@
-package com.notestasksapp
+package com.notestasksapp.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.notestasksapp.R
 
-class MainActivity : AppCompatActivity() {
+class OnBoardingAct : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.act_on_boarding)
     }
 }

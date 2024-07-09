@@ -10,7 +10,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.NotesTasksApp">
         <activity
-            android:name=".MainActivity"
+            android:name=".ui.MainAct"
+            android:exported="true" />
+        <activity
+            android:name=".ui.OnBoardingAct"
+            android:exported="true" />
+        <activity
+            android:name=".ui.SplashAct"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
