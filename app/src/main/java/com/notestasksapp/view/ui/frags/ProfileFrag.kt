@@ -1,4 +1,4 @@
-package com.notestasksapp.ui.frags
+package com.notestasksapp.view.ui.frags
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

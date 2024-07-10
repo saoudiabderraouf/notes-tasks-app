@@ -1,11 +1,11 @@
-package com.notestasksapp.ui
+package com.notestasksapp.view.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.notestasksapp.R
-import com.notestasksapp.ui.frags.NotesFrag
-import com.notestasksapp.ui.frags.ProfileFrag
-import com.notestasksapp.ui.frags.TasksFrag
+import com.notestasksapp.view.ui.frags.NotesFrag
+import com.notestasksapp.view.ui.frags.ProfileFrag
+import com.notestasksapp.view.ui.frags.TasksFrag
 import kotlinx.android.synthetic.main.act_main.*
 
 class MainAct : AppCompatActivity() {

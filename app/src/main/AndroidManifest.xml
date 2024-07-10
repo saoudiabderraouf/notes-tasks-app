@@ -10,22 +10,22 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.NotesTasksApp">
         <activity
-            android:name=".ui.notes.SearchNoteAct"
+            android:name="com.notestasksapp.view.ui.notes.SearchNoteAct"
             android:exported="true" />
         <activity
-            android:name=".ui.notes.NotesNotificationsAct"
+            android:name="com.notestasksapp.view.ui.notes.NotesNotificationsAct"
             android:exported="true" />
         <activity
-            android:name=".ui.notes.AddNoteAct"
+            android:name="com.notestasksapp.view.ui.notes.AddNoteAct"
             android:exported="true" />
         <activity
-            android:name=".ui.MainAct"
+            android:name="com.notestasksapp.view.ui.MainAct"
             android:exported="true" />
         <activity
-            android:name=".ui.OnBoardingAct"
+            android:name="com.notestasksapp.view.ui.OnBoardingAct"
             android:exported="true" />
         <activity
-            android:name=".ui.SplashAct"
+            android:name="com.notestasksapp.view.ui.SplashAct"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

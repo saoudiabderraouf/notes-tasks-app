@@ -1,12 +1,12 @@
-package com.notestasksapp.ui.notes
+package com.notestasksapp.view.ui.notes
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.notestasksapp.R
 
-class NotesNotificationsAct : AppCompatActivity() {
+class SearchNoteAct : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.act_notes_notifications)
+        setContentView(R.layout.act_search_note)
     }
 }

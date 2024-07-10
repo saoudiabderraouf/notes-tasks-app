@@ -1,4 +1,4 @@
-package com.notestasksapp.ui
+package com.notestasksapp.view.ui
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
