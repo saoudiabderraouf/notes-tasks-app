@@ -16,9 +16,6 @@
             android:name=".view.ui.notes.SearchNoteAct"
             android:exported="true" />
         <activity
-            android:name=".view.ui.notes.NotesNotificationsAct"
-            android:exported="true" />
-        <activity
             android:name=".view.ui.notes.AddNoteAct"
             android:exported="true" />
         <activity

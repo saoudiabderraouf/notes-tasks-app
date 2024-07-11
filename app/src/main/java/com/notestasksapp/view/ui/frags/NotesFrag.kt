@@ -2,19 +2,17 @@ package com.notestasksapp.view.ui.frags
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.notestasksapp.R
 import com.notestasksapp.database.DBHandler
 import com.notestasksapp.model.Note
 import com.notestasksapp.view.adapter.NotesAdapter
 import com.notestasksapp.view.ui.notes.AddNoteAct
-import com.notestasksapp.view.ui.notes.NotesNotificationsAct
 import com.notestasksapp.view.ui.notes.SearchNoteAct
 import kotlinx.android.synthetic.main.frag_notes.view.*
 
@@ -34,7 +32,7 @@ class NotesFrag : Fragment() {
         }
 
         mView.notifications_btn.setOnClickListener {
-            startActivity(Intent(requireContext(), NotesNotificationsAct::class.java))
+            Toast.makeText(requireContext(), "Not implemented yet!", Toast.LENGTH_SHORT).show()
         }
 
         mView.add_note_btn.setOnClickListener {
