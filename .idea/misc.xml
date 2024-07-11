@@ -6,17 +6,22 @@
         <entry key="..\:/Users/DELL INSPIRON 7706/AndroidStudioProjects/NotesTasksApp/app/src/main/res/drawable/_circle_blue.xml" value="0.40304054054054056" />
         <entry key="..\:/Users/DELL INSPIRON 7706/AndroidStudioProjects/NotesTasksApp/app/src/main/res/drawable/_circle_gray.xml" value="0.40304054054054056" />
         <entry key="..\:/Users/DELL INSPIRON 7706/AndroidStudioProjects/NotesTasksApp/app/src/main/res/drawable/_rounded_blue_10dp.xml" value="0.40135135135135136" />
+        <entry key="..\:/Users/DELL INSPIRON 7706/AndroidStudioProjects/NotesTasksApp/app/src/main/res/drawable/_rounded_white_10dp.xml" value="0.39899665551839464" />
         <entry key="..\:/Users/DELL INSPIRON 7706/AndroidStudioProjects/NotesTasksApp/app/src/main/res/drawable/ic_add.xml" value="0.39899665551839464" />
+        <entry key="..\:/Users/DELL INSPIRON 7706/AndroidStudioProjects/NotesTasksApp/app/src/main/res/layout/_row_daily_task.xml" value="0.3932432432432432" />
         <entry key="..\:/Users/DELL INSPIRON 7706/AndroidStudioProjects/NotesTasksApp/app/src/main/res/layout/_row_note.xml" value="0.3915540540540541" />
         <entry key="..\:/Users/DELL INSPIRON 7706/AndroidStudioProjects/NotesTasksApp/app/src/main/res/layout/act_add_note.xml" value="0.3932432432432432" />
         <entry key="..\:/Users/DELL INSPIRON 7706/AndroidStudioProjects/NotesTasksApp/app/src/main/res/layout/act_edit_note.xml" value="0.3932432432432432" />
         <entry key="..\:/Users/DELL INSPIRON 7706/AndroidStudioProjects/NotesTasksApp/app/src/main/res/layout/act_main.xml" value="0.3932432432432432" />
         <entry key="..\:/Users/DELL INSPIRON 7706/AndroidStudioProjects/NotesTasksApp/app/src/main/res/layout/act_on_boarding.xml" value="0.3932432432432432" />
+        <entry key="..\:/Users/DELL INSPIRON 7706/AndroidStudioProjects/NotesTasksApp/app/src/main/res/layout/act_search_note.xml" value="0.3932432432432432" />
         <entry key="..\:/Users/DELL INSPIRON 7706/AndroidStudioProjects/NotesTasksApp/app/src/main/res/layout/act_splash.xml" value="0.38929765886287626" />
         <entry key="..\:/Users/DELL INSPIRON 7706/AndroidStudioProjects/NotesTasksApp/app/src/main/res/layout/dialog_confirmation.xml" value="0.3932432432432432" />
         <entry key="..\:/Users/DELL INSPIRON 7706/AndroidStudioProjects/NotesTasksApp/app/src/main/res/layout/dialog_discard.xml" value="0.3932432432432432" />
         <entry key="..\:/Users/DELL INSPIRON 7706/AndroidStudioProjects/NotesTasksApp/app/src/main/res/layout/dialog_save.xml" value="0.3932432432432432" />
         <entry key="..\:/Users/DELL INSPIRON 7706/AndroidStudioProjects/NotesTasksApp/app/src/main/res/layout/frag_notes.xml" value="0.3932432432432432" />
+        <entry key="..\:/Users/DELL INSPIRON 7706/AndroidStudioProjects/NotesTasksApp/app/src/main/res/layout/frag_profile.xml" value="0.3932432432432432" />
+        <entry key="..\:/Users/DELL INSPIRON 7706/AndroidStudioProjects/NotesTasksApp/app/src/main/res/layout/frag_tasks.xml" value="0.3932432432432432" />
       </map>
     </option>
   </component>
