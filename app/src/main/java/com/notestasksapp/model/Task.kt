@@ -1,10 +1,10 @@
 package com.notestasksapp.model
 
-data class Note(
+data class Task(
     var id: Long,
     var title: String,
     var description: String,
-    var color: String,
-    var date_added: String,
-    var last_updated: String
+    var category: String,
+    var start_date: Long,
+    var end_date: Long
 )

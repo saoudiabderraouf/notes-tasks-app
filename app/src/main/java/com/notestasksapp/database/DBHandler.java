@@ -7,6 +7,8 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import com.notestasksapp.model.Note;
+import com.notestasksapp.model.Task;
+import com.notestasksapp.model.TodoItem;
 
 import java.util.ArrayList;
 
@@ -24,8 +26,13 @@ public class DBHandler extends SQLiteOpenHelper {
         String settings = "CREATE TABLE settings (id INTEGER PRIMARY KEY AUTOINCREMENT, name Text,state INTEGER)";
         String notes = "CREATE TABLE notes (id INTEGER PRIMARY KEY AUTOINCREMENT, title TEXT, description TEXT, color TEXT" +
                 ", date_added TEXT, date_updated TEXT)";
+        String tasks = "CREATE TABLE tasks (id INTEGER PRIMARY KEY AUTOINCREMENT, title TEXT, description TEXT, category TEXT" +
+                ", start_date INTEGER, end_date INTEGER)";
+        String todos = "CREATE TABLE todos (id INTEGER PRIMARY KEY AUTOINCREMENT, title TEXT, finished INTEGER, task INTEGER)";
         db.execSQL(settings);
         db.execSQL(notes);
+        db.execSQL(tasks);
+        db.execSQL(todos);
     }
 
     public boolean isEmptyTable(String tableName) {
@@ -72,14 +79,14 @@ public class DBHandler extends SQLiteOpenHelper {
         db.insert("notes", null, values);
         db.close();
     }
-    public boolean isNoteExist(Integer id) {
+    public boolean isNoteExist(Long id) {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery("SELECT * FROM notes WHERE id = " + id.toString() , null);
         int count = cursor.getCount();
         cursor.close();
         return count != 0;
     }
-    public Note getNote(Integer id) {
+    public Note getNote(Long id) {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery("SELECT * FROM notes WHERE id = " + id.toString() , null);
         cursor.moveToFirst();
@@ -109,7 +116,7 @@ public class DBHandler extends SQLiteOpenHelper {
 
         if(cursor.moveToFirst()){
             do{
-                int id = cursor.getInt(0);
+                long id = cursor.getLong(0);
                 String title = cursor.getString(1);
                 String description = cursor.getString(2);
                 String color = cursor.getString(3);
@@ -123,10 +130,132 @@ public class DBHandler extends SQLiteOpenHelper {
         return notes;
     }
 
+    public long addTask(Task task) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put("title", task.component2());
+        values.put("description", task.component3());
+        values.put("category", task.component4());
+        values.put("start_date", task.component5());
+        values.put("end_date", task.component6());
+        long id = db.insert("tasks", null, values);
+        db.close();
+
+        return id;
+    }
+    public boolean isTaskExist(Long id) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery("SELECT * FROM tasks WHERE id = " + id.toString() , null);
+        int count = cursor.getCount();
+        cursor.close();
+        return count != 0;
+    }
+    public Task getTask(Long id) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery("SELECT * FROM tasks WHERE id = " + id.toString() , null);
+        cursor.moveToFirst();
+        String title = cursor.getString(1);
+        String description = cursor.getString(2);
+        String category = cursor.getString(3);
+        int start_date = cursor.getInt(4);
+        int end_date = cursor.getInt(5);
+        cursor.close();
+        return new Task(id, title, description, category, start_date, end_date);
+    }
+    public void updateTask(Task task) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put("title", task.component2());
+        values.put("description", task.component3());
+        values.put("category", task.component4());
+        values.put("start_date", task.component5());
+        values.put("end_date", task.component6());
+        db.update("tasks", values, "id=?", new String[]{String.valueOf(task.getId())});
+        db.close();
+    }
+    public ArrayList<Task> getTasks() {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery("SELECT * FROM tasks" , null);
+        ArrayList<Task> tasks = new ArrayList();
+
+        if(cursor.moveToFirst()){
+            do{
+                long id = cursor.getLong(0);
+                String title = cursor.getString(1);
+                String description = cursor.getString(2);
+                String category = cursor.getString(3);
+                int start_date = cursor.getInt(4);
+                int end_date = cursor.getInt(5);
+                tasks.add(new Task(id, title, description, category, start_date, end_date));
+            } while(cursor.moveToNext());
+        }
+        cursor.close();
+
+        return tasks;
+    }
+
+    public long addTodo(TodoItem todo) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put("title", todo.component2());
+        values.put("finished", todo.component3());
+        values.put("task", todo.component4());
+        long id = db.insert("todos", null, values);
+        db.close();
+
+        return id;
+    }
+    public boolean isTodoExist(Long id) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery("SELECT * FROM todos WHERE id = " + id.toString() , null);
+        int count = cursor.getCount();
+        cursor.close();
+        return count != 0;
+    }
+    public TodoItem getTodo(Long id) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery("SELECT * FROM todos WHERE id = " + id.toString() , null);
+        cursor.moveToFirst();
+        String title = cursor.getString(1);
+        int finished = cursor.getInt(2);
+        long task = cursor.getLong(3);
+        cursor.close();
+        return new TodoItem(id, title, finished, task);
+    }
+    public void updateTodo(TodoItem todo) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put("title", todo.component2());
+        values.put("finished", todo.component3());
+        values.put("task", todo.component4());
+        db.update("todos", values, "id=?", new String[]{String.valueOf(todo.getId())});
+        db.close();
+    }
+    public ArrayList<TodoItem> getTodos() {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery("SELECT * FROM todos" , null);
+        ArrayList<TodoItem> todos = new ArrayList();
+
+        if(cursor.moveToFirst()){
+            do{
+                long id = cursor.getLong(0);
+                String title = cursor.getString(1);
+                int finished = cursor.getInt(2);
+                long task = cursor.getLong(3);
+                todos.add(new TodoItem(id, title, finished, task));
+            } while(cursor.moveToNext());
+        }
+        cursor.close();
+
+        return todos;
+    }
+
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("DROP TABLE IF EXISTS settings");
         db.execSQL("DROP TABLE IF EXISTS notes");
+        db.execSQL("DROP TABLE IF EXISTS tasks");
+        db.execSQL("DROP TABLE IF EXISTS todos");
         onCreate(db);
     }
 }
