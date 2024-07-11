@@ -7,10 +7,12 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.notestasksapp.R
 import com.notestasksapp.database.DBHandler
 import com.notestasksapp.model.Note
+import com.notestasksapp.view.adapter.NotesAdapter
 import com.notestasksapp.view.ui.notes.AddNoteAct
 import com.notestasksapp.view.ui.notes.NotesNotificationsAct
 import com.notestasksapp.view.ui.notes.SearchNoteAct
@@ -45,7 +47,7 @@ class NotesFrag : Fragment() {
     private fun initialization() {
         dbHandler = DBHandler(requireContext())
 
-        mView.notes_list.layoutManager = LinearLayoutManager(requireContext())
+        mView.notes_list.layoutManager = GridLayoutManager(requireContext(), 2)
         mView.notes_list.setHasFixedSize(true)
 
         notes = ArrayList()
@@ -53,7 +55,7 @@ class NotesFrag : Fragment() {
         notes = dbHandler.notes
 
         if (notes.isNotEmpty()){
-            //mView.notes_list.adapter = NotesAdapter(requireContext(), notes, dbHandler)
+            mView.notes_list.adapter = NotesAdapter(requireContext(), notes, dbHandler)
             mView.notes_list.visibility = View.VISIBLE
             mView.empty_list_layout.visibility = View.GONE
         }else{
@@ -65,14 +67,14 @@ class NotesFrag : Fragment() {
     override fun onResume() {
         super.onResume()
 
-        //mView.notes_list.adapter = NotesAdapter(requireContext(), ArrayList(), dbHandler)
+        mView.notes_list.adapter = NotesAdapter(requireContext(), ArrayList(), dbHandler)
 
         notes = ArrayList()
         notes.clear()
         notes = dbHandler.notes
 
         if (notes.isNotEmpty()){
-            //mView.notes_list.adapter = NotesAdapter(requireContext(), notes, dbHandler)
+            mView.notes_list.adapter = NotesAdapter(requireContext(), notes, dbHandler)
             mView.notes_list.visibility = View.VISIBLE
             mView.empty_list_layout.visibility = View.GONE
         }else{
