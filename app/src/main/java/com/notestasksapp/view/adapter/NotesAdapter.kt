@@ -11,7 +11,7 @@ import com.notestasksapp.R
 import com.notestasksapp.database.DBHandler
 import com.notestasksapp.helper.Helper
 import com.notestasksapp.model.Note
-import com.notestasksapp.view.ui.notes.NoteDetailsAct
+import com.notestasksapp.view.ui.notes.EditNoteAct
 
 class NotesAdapter(val context: Context, var data: ArrayList<Note>, dbHandler: DBHandler) :
     RecyclerView.Adapter<NotesAdapter.MyViewHolder>() {
@@ -32,7 +32,7 @@ class NotesAdapter(val context: Context, var data: ArrayList<Note>, dbHandler: D
 
         holder.itemView.setOnClickListener {
             Helper.selected_note = data[pos]
-            context.startActivity(Intent(context, NoteDetailsAct::class.java))
+            context.startActivity(Intent(context, EditNoteAct::class.java))
         }
 
     }

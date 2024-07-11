@@ -6,10 +6,10 @@ import android.widget.RelativeLayout
 import android.widget.TextView
 import com.notestasksapp.R
 
-class DiscardDialog(context: Context) : Dialog(context) {
+class SaveDialog(context: Context) : Dialog(context) {
 
     constructor(context: Context ,title : String , description: String) : this(context) {
-        this.setContentView(R.layout.dialog_discard)
+        this.setContentView(R.layout.dialog_save)
         this.title = this.findViewById(R.id.dialog_title)
         this.description = this.findViewById(R.id.dialog_description)
         this.ok_btn = this.findViewById(R.id.ok_btn)

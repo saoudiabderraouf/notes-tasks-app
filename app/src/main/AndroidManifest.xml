@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.NotesTasksApp">
         <activity
-            android:name=".view.ui.notes.NoteDetailsAct"
+            android:name=".view.ui.notes.EditNoteAct"
             android:exported="true" />
         <activity
             android:name=".view.ui.notes.SearchNoteAct"
