@@ -2,7 +2,6 @@ package com.notestasksapp.view.ui.frags
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -14,8 +13,6 @@ import com.notestasksapp.model.Task
 import com.notestasksapp.view.adapter.DailyTasksAdapter
 import com.notestasksapp.view.adapter.PriorityTasksAdapter
 import com.notestasksapp.view.ui.tasks.AddTaskAct
-import com.notestasksapp.view.ui.tasks.CalendarAct
-import com.notestasksapp.view.ui.tasks.NotificationsAct
 import com.notestasksapp.view.ui.tasks.SearchTaskAct
 import kotlinx.android.synthetic.main.frag_tasks.view.*
 

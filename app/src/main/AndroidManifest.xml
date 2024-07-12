@@ -16,12 +16,6 @@
             android:name=".view.ui.tasks.PriorityTaskDetailsAct"
             android:exported="true" />
         <activity
-            android:name=".view.ui.tasks.NotificationsAct"
-            android:exported="true" />
-        <activity
-            android:name=".view.ui.tasks.CalendarAct"
-            android:exported="true" />
-        <activity
             android:name=".view.ui.tasks.SearchTaskAct"
             android:exported="true" />
         <activity
