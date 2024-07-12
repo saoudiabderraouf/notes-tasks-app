@@ -67,6 +67,7 @@ class TasksFrag : Fragment() {
         priorityTasks = ArrayList()
         priorityTasks.clear()
         priorityTasks = dbHandler.tasks.filter { task -> task.category == "Priority task" } as ArrayList<Task>
+        priorityTasks.reverse()
 
         if (priorityTasks.isEmpty()){
             mView.empty_priority_tasks_list_layout.visibility = View.VISIBLE
@@ -74,7 +75,7 @@ class TasksFrag : Fragment() {
         }else{
             mView.empty_priority_tasks_list_layout.visibility = View.GONE
             mView.priority_tasks_list.visibility = View.VISIBLE
-            mView.priority_tasks_list.adapter = PriorityTasksAdapter(requireContext(), priorityTasks.reverse(), dbHandler)
+            mView.priority_tasks_list.adapter = PriorityTasksAdapter(requireContext(), priorityTasks, dbHandler)
         }
 
         mView.daily_tasks_list.layoutManager = LinearLayoutManager(requireContext())
@@ -83,6 +84,7 @@ class TasksFrag : Fragment() {
         dailyTasks = ArrayList()
         dailyTasks.clear()
         dailyTasks = dbHandler.tasks.filter { task -> task.category == "Daily task" } as ArrayList<Task>
+        dailyTasks.reverse()
 
         if (dailyTasks.isEmpty()){
             mView.empty_daily_tasks_list_layout.visibility = View.VISIBLE
@@ -90,7 +92,7 @@ class TasksFrag : Fragment() {
         }else{
             mView.empty_daily_tasks_list_layout.visibility = View.GONE
             mView.daily_tasks_list.visibility = View.VISIBLE
-            mView.daily_tasks_list.adapter = DailyTasksAdapter(requireContext(), dailyTasks.reverse(), dbHandler)
+            mView.daily_tasks_list.adapter = DailyTasksAdapter(requireContext(), dailyTasks, dbHandler)
         }
     }
 
@@ -103,6 +105,7 @@ class TasksFrag : Fragment() {
         priorityTasks = ArrayList()
         priorityTasks.clear()
         priorityTasks = dbHandler.tasks.filter { task -> task.category == "Priority task" } as ArrayList<Task>
+        priorityTasks.reverse()
 
         if (priorityTasks.isEmpty()){
             mView.empty_priority_tasks_list_layout.visibility = View.VISIBLE
@@ -110,7 +113,7 @@ class TasksFrag : Fragment() {
         }else{
             mView.empty_priority_tasks_list_layout.visibility = View.GONE
             mView.priority_tasks_list.visibility = View.VISIBLE
-            mView.priority_tasks_list.adapter = PriorityTasksAdapter(requireContext(), priorityTasks.reverse(), dbHandler)
+            mView.priority_tasks_list.adapter = PriorityTasksAdapter(requireContext(), priorityTasks, dbHandler)
         }
 
         mView.daily_tasks_list.adapter = DailyTasksAdapter(requireContext(), ArrayList(), dbHandler)
@@ -118,6 +121,7 @@ class TasksFrag : Fragment() {
         dailyTasks = ArrayList()
         dailyTasks.clear()
         dailyTasks = dbHandler.tasks.filter { task -> task.category == "Daily task" } as ArrayList<Task>
+        dailyTasks.reverse()
 
         if (dailyTasks.isEmpty()){
             mView.empty_daily_tasks_list_layout.visibility = View.VISIBLE
@@ -125,7 +129,7 @@ class TasksFrag : Fragment() {
         }else{
             mView.empty_daily_tasks_list_layout.visibility = View.GONE
             mView.daily_tasks_list.visibility = View.VISIBLE
-            mView.daily_tasks_list.adapter = DailyTasksAdapter(requireContext(), dailyTasks.reverse(), dbHandler)
+            mView.daily_tasks_list.adapter = DailyTasksAdapter(requireContext(), dailyTasks, dbHandler)
         }
     }
 

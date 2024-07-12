@@ -51,9 +51,10 @@ class NotesFrag : Fragment() {
         notes = ArrayList()
         notes.clear()
         notes = dbHandler.notes
+        notes.reverse()
 
         if (notes.isNotEmpty()){
-            mView.notes_list.adapter = NotesAdapter(requireContext(), notes.reverse(), dbHandler)
+            mView.notes_list.adapter = NotesAdapter(requireContext(), notes, dbHandler)
             mView.notes_list.visibility = View.VISIBLE
             mView.empty_list_layout.visibility = View.GONE
         }else{
@@ -70,9 +71,10 @@ class NotesFrag : Fragment() {
         notes = ArrayList()
         notes.clear()
         notes = dbHandler.notes
+        notes.reverse()
 
         if (notes.isNotEmpty()){
-            mView.notes_list.adapter = NotesAdapter(requireContext(), notes.reverse(), dbHandler)
+            mView.notes_list.adapter = NotesAdapter(requireContext(), notes, dbHandler)
             mView.notes_list.visibility = View.VISIBLE
             mView.empty_list_layout.visibility = View.GONE
         }else{
