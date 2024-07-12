@@ -5,7 +5,7 @@ data class Task(
     var title: String,
     var description: String,
     var category: String,
-    var start_date: Long,
-    var end_date: Long,
+    var start_date: String,
+    var end_date: String,
     var finished: Int
 )

@@ -27,7 +27,7 @@ public class DBHandler extends SQLiteOpenHelper {
         String notes = "CREATE TABLE notes (id INTEGER PRIMARY KEY AUTOINCREMENT, title TEXT, description TEXT, color TEXT" +
                 ", date_added TEXT, date_updated TEXT)";
         String tasks = "CREATE TABLE tasks (id INTEGER PRIMARY KEY AUTOINCREMENT, title TEXT, description TEXT, category TEXT" +
-                ", start_date INTEGER, end_date INTEGER, finished INTEGER)";
+                ", start_date TEXT, end_date TEXT, finished INTEGER)";
         String todos = "CREATE TABLE todos (id INTEGER PRIMARY KEY AUTOINCREMENT, title TEXT, finished INTEGER, task INTEGER)";
         db.execSQL(settings);
         db.execSQL(notes);
@@ -158,8 +158,8 @@ public class DBHandler extends SQLiteOpenHelper {
         String title = cursor.getString(1);
         String description = cursor.getString(2);
         String category = cursor.getString(3);
-        int start_date = cursor.getInt(4);
-        int end_date = cursor.getInt(5);
+        String start_date = cursor.getString(4);
+        String end_date = cursor.getString(5);
         int finished = cursor.getInt(6);
         cursor.close();
         return new Task(id, title, description, category, start_date, end_date, finished);
@@ -187,8 +187,8 @@ public class DBHandler extends SQLiteOpenHelper {
                 String title = cursor.getString(1);
                 String description = cursor.getString(2);
                 String category = cursor.getString(3);
-                int start_date = cursor.getInt(4);
-                int end_date = cursor.getInt(5);
+                String start_date = cursor.getString(4);
+                String end_date = cursor.getString(5);
                 int finished = cursor.getInt(6);
                 tasks.add(new Task(id, title, description, category, start_date, end_date, finished));
             } while(cursor.moveToNext());

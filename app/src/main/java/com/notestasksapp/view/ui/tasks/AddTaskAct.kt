@@ -6,10 +6,12 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.notestasksapp.R
 import com.notestasksapp.database.DBHandler
 import com.notestasksapp.model.Task
 import com.notestasksapp.model.TodoItem
+import com.notestasksapp.view.adapter.TodoAdapter
 import com.notestasksapp.view.dialog.ConfirmationDialog
 import kotlinx.android.synthetic.main.act_add_task.*
 import java.text.SimpleDateFormat
@@ -22,8 +24,8 @@ class AddTaskAct : AppCompatActivity() {
     private lateinit var todoItems: ArrayList<String>
     private lateinit var calendar: Calendar
 
-    private var startDate = 10L
-    private var endDate = 10L
+    private var startDate = ""
+    private var endDate = ""
     private var category = "Priority task"
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -36,7 +38,7 @@ class AddTaskAct : AppCompatActivity() {
             val datePickerDialog = DatePickerDialog(this, { _, year: Int, monthOfYear: Int, dayOfMonth: Int ->
                 val selectedDate = Calendar.getInstance()
                 selectedDate.set(year, monthOfYear, dayOfMonth)
-                startDate = selectedDate.timeInMillis
+                startDate = SimpleDateFormat("dd.MM.yyyy").format(selectedDate.time)
                 start_date_txt.text = SimpleDateFormat("dd MMMM yyyy").format(selectedDate.time)
             },
                 calendar.get(Calendar.YEAR),
@@ -50,7 +52,7 @@ class AddTaskAct : AppCompatActivity() {
             val datePickerDialog = DatePickerDialog(this, { _, year: Int, monthOfYear: Int, dayOfMonth: Int ->
                 val selectedDate = Calendar.getInstance()
                 selectedDate.set(year, monthOfYear, dayOfMonth)
-                endDate = selectedDate.timeInMillis
+                endDate = SimpleDateFormat("dd.MM.yyyy").format(selectedDate.time)
                 end_date_txt.text = SimpleDateFormat("dd MMMM yyyy").format(selectedDate.time)
             },
                 calendar.get(Calendar.YEAR),
@@ -86,8 +88,10 @@ class AddTaskAct : AppCompatActivity() {
 
         add_todo_img.setOnClickListener {
             if (!todo_edt.text.isNullOrEmpty()) {
+                todo_list.adapter = TodoAdapter(this, ArrayList(), dbHandler)
                 todoItems.add(todo_edt.text.toString())
                 todo_edt.setText("")
+                todo_list.adapter = TodoAdapter(this, todoItems, dbHandler)
             }
         }
 
@@ -128,11 +132,15 @@ class AddTaskAct : AppCompatActivity() {
 
         calendar = Calendar.getInstance()
         todoItems = ArrayList()
+
+        todo_list.layoutManager = LinearLayoutManager(this)
+        todo_list.setHasFixedSize(true)
+        todo_list.adapter = TodoAdapter(this, ArrayList(), dbHandler)
     }
 
     private fun initData() {
-        startDate = 0L
-        endDate = 0L
+        startDate = ""
+        endDate = ""
         category = "Priority task"
         start_date_txt.text = "xx Xxxxxxx xxxx"
         end_date_txt.text = "xx Xxxxxxx xxxx"
@@ -140,6 +148,7 @@ class AddTaskAct : AppCompatActivity() {
         task_description_edt.setText("")
         todo_edt.setText("")
         todoItems.clear()
+        todo_list.adapter = TodoAdapter(this, ArrayList(), dbHandler)
 
         priority_tasks_btn.setBackgroundResource(R.drawable._rounded_blue_10dp)
         daily_tasks_btn.setBackgroundResource(R.drawable._rounded_white_10dp_1dp)
@@ -149,12 +158,12 @@ class AddTaskAct : AppCompatActivity() {
     }
 
     private fun verifyData(): Boolean {
-        if (startDate == 0L){
+        if (startDate == ""){
             Toast.makeText(this, "Please, select a start date first!", Toast.LENGTH_SHORT).show()
             return false
         }
 
-        if (endDate == 0L){
+        if (endDate == ""){
             Toast.makeText(this, "Please, select an end date first!", Toast.LENGTH_SHORT).show()
             return false
         }
