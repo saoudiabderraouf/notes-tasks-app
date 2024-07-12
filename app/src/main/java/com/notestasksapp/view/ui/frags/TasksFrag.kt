@@ -74,7 +74,7 @@ class TasksFrag : Fragment() {
         }else{
             mView.empty_priority_tasks_list_layout.visibility = View.GONE
             mView.priority_tasks_list.visibility = View.VISIBLE
-            mView.priority_tasks_list.adapter = PriorityTasksAdapter(requireContext(), priorityTasks, dbHandler)
+            mView.priority_tasks_list.adapter = PriorityTasksAdapter(requireContext(), priorityTasks.reverse(), dbHandler)
         }
 
         mView.daily_tasks_list.layoutManager = LinearLayoutManager(requireContext())
@@ -90,7 +90,7 @@ class TasksFrag : Fragment() {
         }else{
             mView.empty_daily_tasks_list_layout.visibility = View.GONE
             mView.daily_tasks_list.visibility = View.VISIBLE
-            mView.daily_tasks_list.adapter = DailyTasksAdapter(requireContext(), dailyTasks, dbHandler)
+            mView.daily_tasks_list.adapter = DailyTasksAdapter(requireContext(), dailyTasks.reverse(), dbHandler)
         }
     }
 
@@ -110,7 +110,7 @@ class TasksFrag : Fragment() {
         }else{
             mView.empty_priority_tasks_list_layout.visibility = View.GONE
             mView.priority_tasks_list.visibility = View.VISIBLE
-            mView.priority_tasks_list.adapter = PriorityTasksAdapter(requireContext(), priorityTasks, dbHandler)
+            mView.priority_tasks_list.adapter = PriorityTasksAdapter(requireContext(), priorityTasks.reverse(), dbHandler)
         }
 
         mView.daily_tasks_list.adapter = DailyTasksAdapter(requireContext(), ArrayList(), dbHandler)
@@ -125,7 +125,7 @@ class TasksFrag : Fragment() {
         }else{
             mView.empty_daily_tasks_list_layout.visibility = View.GONE
             mView.daily_tasks_list.visibility = View.VISIBLE
-            mView.daily_tasks_list.adapter = DailyTasksAdapter(requireContext(), dailyTasks, dbHandler)
+            mView.daily_tasks_list.adapter = DailyTasksAdapter(requireContext(), dailyTasks.reverse(), dbHandler)
         }
     }
 

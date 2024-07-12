@@ -8,15 +8,17 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.notestasksapp.R
 import com.notestasksapp.database.DBHandler
 import com.notestasksapp.helper.Helper
 import com.notestasksapp.model.Task
+import com.notestasksapp.model.TodoItem
 import com.notestasksapp.view.ui.tasks.PriorityTaskDetailsAct
 
-class DailyTasksAdapter(val context: Context, var data: ArrayList<Task>, var dbHandler: DBHandler) :
-    RecyclerView.Adapter<DailyTasksAdapter.MyViewHolder>() {
+class PriorityTodoAdapter(val context: Context, var data: ArrayList<TodoItem>, var dbHandler: DBHandler) :
+    RecyclerView.Adapter<PriorityTodoAdapter.MyViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         return MyViewHolder(
@@ -44,19 +46,15 @@ class DailyTasksAdapter(val context: Context, var data: ArrayList<Task>, var dbH
                 holder.todo_item_checkbox.setImageResource(R.drawable.ic_check_box)
 
                 data[pos].finished = 1
-                dbHandler.updateTask(data[pos])
+                dbHandler.updateTodo(data[pos])
             }else{
                 holder.todo_item_title.setTextColor(Color.parseColor("#4A4646"))
                 holder.todo_item_checkbox.setImageResource(R.drawable.ic_check_box_outline)
 
                 data[pos].finished = 0
-                dbHandler.updateTask(data[pos])
+                dbHandler.updateTodo(data[pos])
             }
-        }
-
-        holder.itemView.setOnClickListener {
-            Helper.selected_task = data[pos]
-            context.startActivity(Intent(context, PriorityTaskDetailsAct::class.java))
+            (context as PriorityTaskDetailsAct).updateProgress()
         }
 
     }

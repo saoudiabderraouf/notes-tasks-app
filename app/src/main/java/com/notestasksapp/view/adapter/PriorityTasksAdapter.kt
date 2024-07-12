@@ -3,11 +3,9 @@ package com.notestasksapp.view.adapter
 import android.content.Context
 import android.content.Intent
 import android.graphics.Color
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
@@ -15,13 +13,9 @@ import com.google.android.material.progressindicator.LinearProgressIndicator
 import com.notestasksapp.R
 import com.notestasksapp.database.DBHandler
 import com.notestasksapp.helper.Helper
-import com.notestasksapp.model.Note
 import com.notestasksapp.model.Task
 import com.notestasksapp.model.TodoItem
-import com.notestasksapp.view.ui.notes.EditNoteAct
-import com.notestasksapp.view.ui.tasks.CalendarAct
-import com.notestasksapp.view.ui.tasks.TaskDetailsAct
-import java.text.SimpleDateFormat
+import com.notestasksapp.view.ui.tasks.PriorityTaskDetailsAct
 import java.util.*
 import java.util.concurrent.TimeUnit
 import kotlin.collections.ArrayList
@@ -74,7 +68,7 @@ class PriorityTasksAdapter(val context: Context, var data: ArrayList<Task>, var 
 
         holder.itemView.setOnClickListener {
             Helper.selected_task = data[pos]
-            context.startActivity(Intent(context, TaskDetailsAct::class.java))
+            context.startActivity(Intent(context, PriorityTaskDetailsAct::class.java))
         }
 
     }
