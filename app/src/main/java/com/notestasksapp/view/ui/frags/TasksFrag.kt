@@ -12,6 +12,7 @@ import com.notestasksapp.R
 import com.notestasksapp.database.DBHandler
 import com.notestasksapp.model.Task
 import com.notestasksapp.view.adapter.DailyTasksAdapter
+import com.notestasksapp.view.adapter.PriorityTasksAdapter
 import com.notestasksapp.view.ui.tasks.AddTaskAct
 import com.notestasksapp.view.ui.tasks.CalendarAct
 import com.notestasksapp.view.ui.tasks.NotificationsAct
@@ -23,7 +24,7 @@ class TasksFrag : Fragment() {
     private lateinit var mView: View
     private lateinit var dbHandler: DBHandler
     private lateinit var dailyTasks: ArrayList<Task>
-    private lateinit var tasks: ArrayList<Task>
+    private lateinit var priorityTasks: ArrayList<Task>
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         mView = inflater.inflate(R.layout.frag_tasks, container, false)
@@ -60,6 +61,22 @@ class TasksFrag : Fragment() {
     private fun initialization() {
         dbHandler = DBHandler(requireContext())
 
+        mView.priority_tasks_list.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+        mView.priority_tasks_list.setHasFixedSize(true)
+
+        priorityTasks = ArrayList()
+        priorityTasks.clear()
+        priorityTasks = dbHandler.tasks.filter { task -> task.category == "Priority task" } as ArrayList<Task>
+
+        if (priorityTasks.isEmpty()){
+            mView.empty_priority_tasks_list_layout.visibility = View.VISIBLE
+            mView.priority_tasks_list.visibility = View.GONE
+        }else{
+            mView.empty_priority_tasks_list_layout.visibility = View.GONE
+            mView.priority_tasks_list.visibility = View.VISIBLE
+            mView.priority_tasks_list.adapter = PriorityTasksAdapter(requireContext(), priorityTasks, dbHandler)
+        }
+
         mView.daily_tasks_list.layoutManager = LinearLayoutManager(requireContext())
         mView.daily_tasks_list.setHasFixedSize(true)
 
@@ -79,6 +96,22 @@ class TasksFrag : Fragment() {
 
     override fun onResume() {
         super.onResume()
+
+        mView.priority_tasks_list.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+        mView.priority_tasks_list.setHasFixedSize(true)
+
+        priorityTasks = ArrayList()
+        priorityTasks.clear()
+        priorityTasks = dbHandler.tasks.filter { task -> task.category == "Priority task" } as ArrayList<Task>
+
+        if (priorityTasks.isEmpty()){
+            mView.empty_priority_tasks_list_layout.visibility = View.VISIBLE
+            mView.priority_tasks_list.visibility = View.GONE
+        }else{
+            mView.empty_priority_tasks_list_layout.visibility = View.GONE
+            mView.priority_tasks_list.visibility = View.VISIBLE
+            mView.priority_tasks_list.adapter = PriorityTasksAdapter(requireContext(), priorityTasks, dbHandler)
+        }
 
         mView.daily_tasks_list.adapter = DailyTasksAdapter(requireContext(), ArrayList(), dbHandler)
 
