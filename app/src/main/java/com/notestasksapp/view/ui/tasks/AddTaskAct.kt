@@ -158,6 +158,8 @@ class AddTaskAct : AppCompatActivity() {
 
         priority_tasks_txt.setTextColor(Color.parseColor("#FFFFFF"))
         daily_tasks_txt.setTextColor(Color.parseColor("#006EE9"))
+
+        todo_items_layout.visibility = View.VISIBLE
     }
 
     private fun verifyData(): Boolean {
