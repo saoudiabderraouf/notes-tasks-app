@@ -4,6 +4,7 @@ import android.app.DatePickerDialog
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
 import com.notestasksapp.R
 import com.notestasksapp.database.DBHandler
@@ -67,6 +68,8 @@ class AddTaskAct : AppCompatActivity() {
 
             priority_tasks_txt.setTextColor(Color.parseColor("#FFFFFF"))
             daily_tasks_txt.setTextColor(Color.parseColor("#006EE9"))
+
+            todo_items_layout.visibility = View.VISIBLE
         }
 
         daily_tasks_btn.setOnClickListener {
@@ -77,6 +80,8 @@ class AddTaskAct : AppCompatActivity() {
 
             priority_tasks_txt.setTextColor(Color.parseColor("#006EE9"))
             daily_tasks_txt.setTextColor(Color.parseColor("#FFFFFF"))
+
+            todo_items_layout.visibility = View.GONE
         }
 
         add_todo_img.setOnClickListener {
@@ -92,10 +97,12 @@ class AddTaskAct : AppCompatActivity() {
 
         save_btn.setOnClickListener {
             if (verifyData()){
-                val task = Task(0, task_title_edt.text.toString(), task_description_edt.text.toString(), category, startDate, endDate)
+                val task = Task(0, task_title_edt.text.toString(), task_description_edt.text.toString(), category, startDate, endDate, 0)
                 task.id = dbHandler.addTask(task)
-                for (item in todoItems){
-                    dbHandler.addTodo(TodoItem(0, item, 0, task.id))
+                if (category == "Priority task"){
+                    for (item in todoItems){
+                        dbHandler.addTodo(TodoItem(0, item, 0, task.id))
+                    }
                 }
                 val confirmationDialog = ConfirmationDialog(this, "Add a new task", "Do you want to add a new task?")
                 confirmationDialog.ok_btn.setOnClickListener {
@@ -167,7 +174,7 @@ class AddTaskAct : AppCompatActivity() {
             return false
         }
 
-        if (todoItems.isNullOrEmpty()){
+        if (category == "Priority task" && todoItems.isNullOrEmpty()){
             Toast.makeText(this, "Please, add at least one todo item!", Toast.LENGTH_SHORT).show()
             return false
         }

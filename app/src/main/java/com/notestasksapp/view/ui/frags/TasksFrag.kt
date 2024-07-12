@@ -7,9 +7,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.notestasksapp.R
 import com.notestasksapp.database.DBHandler
 import com.notestasksapp.model.Task
+import com.notestasksapp.view.adapter.DailyTasksAdapter
 import com.notestasksapp.view.ui.tasks.AddTaskAct
 import com.notestasksapp.view.ui.tasks.CalendarAct
 import com.notestasksapp.view.ui.tasks.NotificationsAct
@@ -20,6 +22,7 @@ class TasksFrag : Fragment() {
 
     private lateinit var mView: View
     private lateinit var dbHandler: DBHandler
+    private lateinit var dailyTasks: ArrayList<Task>
     private lateinit var tasks: ArrayList<Task>
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -56,25 +59,40 @@ class TasksFrag : Fragment() {
 
     private fun initialization() {
         dbHandler = DBHandler(requireContext())
+
+        mView.daily_tasks_list.layoutManager = LinearLayoutManager(requireContext())
+        mView.daily_tasks_list.setHasFixedSize(true)
+
+        dailyTasks = ArrayList()
+        dailyTasks.clear()
+        dailyTasks = dbHandler.tasks.filter { task -> task.category == "Daily task" } as ArrayList<Task>
+
+        if (dailyTasks.isEmpty()){
+            mView.empty_daily_tasks_list_layout.visibility = View.VISIBLE
+            mView.daily_tasks_list.visibility = View.GONE
+        }else{
+            mView.empty_daily_tasks_list_layout.visibility = View.GONE
+            mView.daily_tasks_list.visibility = View.VISIBLE
+            mView.daily_tasks_list.adapter = DailyTasksAdapter(requireContext(), dailyTasks, dbHandler)
+        }
     }
 
     override fun onResume() {
         super.onResume()
 
-        //mView.notes_list.adapter = NotesAdapter(requireContext(), ArrayList(), dbHandler)
+        mView.daily_tasks_list.adapter = DailyTasksAdapter(requireContext(), ArrayList(), dbHandler)
 
-        tasks = ArrayList()
-        tasks.clear()
-        tasks = dbHandler.tasks
-        Log.e("000", tasks.toString())
+        dailyTasks = ArrayList()
+        dailyTasks.clear()
+        dailyTasks = dbHandler.tasks.filter { task -> task.category == "Daily task" } as ArrayList<Task>
 
-        if (tasks.isNotEmpty()){
-            //mView.notes_list.adapter = NotesAdapter(requireContext(), notes, dbHandler)
-            //mView.notes_list.visibility = View.VISIBLE
-            //mView.empty_list_layout.visibility = View.GONE
+        if (dailyTasks.isEmpty()){
+            mView.empty_daily_tasks_list_layout.visibility = View.VISIBLE
+            mView.daily_tasks_list.visibility = View.GONE
         }else{
-            //mView.notes_list.visibility = View.GONE
-            //mView.empty_list_layout.visibility = View.VISIBLE
+            mView.empty_daily_tasks_list_layout.visibility = View.GONE
+            mView.daily_tasks_list.visibility = View.VISIBLE
+            mView.daily_tasks_list.adapter = DailyTasksAdapter(requireContext(), dailyTasks, dbHandler)
         }
     }
 

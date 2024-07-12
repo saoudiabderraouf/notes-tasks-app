@@ -27,7 +27,7 @@ public class DBHandler extends SQLiteOpenHelper {
         String notes = "CREATE TABLE notes (id INTEGER PRIMARY KEY AUTOINCREMENT, title TEXT, description TEXT, color TEXT" +
                 ", date_added TEXT, date_updated TEXT)";
         String tasks = "CREATE TABLE tasks (id INTEGER PRIMARY KEY AUTOINCREMENT, title TEXT, description TEXT, category TEXT" +
-                ", start_date INTEGER, end_date INTEGER)";
+                ", start_date INTEGER, end_date INTEGER, finished INTEGER)";
         String todos = "CREATE TABLE todos (id INTEGER PRIMARY KEY AUTOINCREMENT, title TEXT, finished INTEGER, task INTEGER)";
         db.execSQL(settings);
         db.execSQL(notes);
@@ -138,6 +138,7 @@ public class DBHandler extends SQLiteOpenHelper {
         values.put("category", task.component4());
         values.put("start_date", task.component5());
         values.put("end_date", task.component6());
+        values.put("finished", task.component7());
         long id = db.insert("tasks", null, values);
         db.close();
 
@@ -159,8 +160,9 @@ public class DBHandler extends SQLiteOpenHelper {
         String category = cursor.getString(3);
         int start_date = cursor.getInt(4);
         int end_date = cursor.getInt(5);
+        int finished = cursor.getInt(6);
         cursor.close();
-        return new Task(id, title, description, category, start_date, end_date);
+        return new Task(id, title, description, category, start_date, end_date, finished);
     }
     public void updateTask(Task task) {
         SQLiteDatabase db = this.getWritableDatabase();
@@ -170,6 +172,7 @@ public class DBHandler extends SQLiteOpenHelper {
         values.put("category", task.component4());
         values.put("start_date", task.component5());
         values.put("end_date", task.component6());
+        values.put("finished", task.component7());
         db.update("tasks", values, "id=?", new String[]{String.valueOf(task.getId())});
         db.close();
     }
@@ -186,7 +189,8 @@ public class DBHandler extends SQLiteOpenHelper {
                 String category = cursor.getString(3);
                 int start_date = cursor.getInt(4);
                 int end_date = cursor.getInt(5);
-                tasks.add(new Task(id, title, description, category, start_date, end_date));
+                int finished = cursor.getInt(6);
+                tasks.add(new Task(id, title, description, category, start_date, end_date, finished));
             } while(cursor.moveToNext());
         }
         cursor.close();
