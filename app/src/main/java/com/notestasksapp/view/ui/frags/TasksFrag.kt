@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.notestasksapp.R
 import com.notestasksapp.database.DBHandler
@@ -33,11 +34,11 @@ class TasksFrag : Fragment() {
         }
 
         mView.calendar_btn.setOnClickListener {
-            startActivity(Intent(requireContext(), CalendarAct::class.java))
+            Toast.makeText(requireContext(), "Not implemented yet!", Toast.LENGTH_SHORT).show()
         }
 
         mView.notifications_btn.setOnClickListener {
-            startActivity(Intent(requireContext(), NotificationsAct::class.java))
+            Toast.makeText(requireContext(), "Not implemented yet!", Toast.LENGTH_SHORT).show()
         }
 
         mView.add_task_btn.setOnClickListener {
