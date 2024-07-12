@@ -343,15 +343,13 @@
                         android:layout_width="24dp"
                         android:layout_height="24dp"
                         android:layout_marginHorizontal="10dp"
-                        android:src="@drawable/ic_save"
-                        app:tint="#FF0000"/>
+                        android:src="@drawable/ic_remove"/>
 
                     <ImageView
                         android:id="@+id/add_todo_img"
                         android:layout_width="24dp"
                         android:layout_height="24dp"
-                        android:src="@drawable/ic_save"
-                        app:tint="#006EE9"/>
+                        android:src="@drawable/ic_addd"/>
 
                 </LinearLayout>
 

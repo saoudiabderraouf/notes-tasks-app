@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.NotesTasksApp">
         <activity
+            android:name=".view.ui.tasks.DailyTaskDetailsAct"
+            android:exported="true" />
+        <activity
             android:name=".view.ui.tasks.PriorityTaskDetailsAct"
             android:exported="true" />
         <activity

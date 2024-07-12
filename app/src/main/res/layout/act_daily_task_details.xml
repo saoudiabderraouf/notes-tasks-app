@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#FFFFFF"
+    tools:context=".view.ui.tasks.PriorityTaskDetailsAct">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/top_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardBackgroundColor="#FFFFFF"
+        android:elevation="10dp"
+        app:cardElevation="10dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_margin="15dp">
+
+            <RelativeLayout
+                android:id="@+id/back_btn"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:background="@drawable/_rounded_blue_10dp">
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="11dp"
+                    android:src="@drawable/ic_arrow_back" />
+
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/task_title_txt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="15dp"
+                android:layout_toEndOf="@id/back_btn"
+                android:fontFamily="@font/inter_600"
+                android:text="Title"
+                android:textColor="#006EE9"
+                android:textSize="20sp" />
+
+        </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginHorizontal="15dp"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="start"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/inter_500"
+                android:text="Start"
+                android:textSize="14sp"
+                android:textColor="#4A4646"/>
+
+            <TextView
+                android:id="@+id/start_date_txt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/inter_500"
+                android:text="xx Xxxxxxx xxxx"
+                android:textColor="#4A4646"
+                android:textSize="12sp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="end"
+            android:layout_marginStart="15dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/inter_600"
+                android:text="End"
+                android:textSize="14sp"
+                android:textColor="#4A4646"/>
+
+            <TextView
+                android:id="@+id/end_date_txt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/inter_500"
+                android:text="xx Xxxxxxx xxxx"
+                android:textColor="#4A4646"
+                android:textSize="12sp"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_marginVertical="15dp"
+        android:layout_marginHorizontal="50dp"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:layout_marginHorizontal="10dp"
+            android:background="@drawable/_rounded_blue_20dp"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/hours_txt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/inter_700"
+                android:text="0"
+                android:textSize="40sp"
+                android:textColor="#FFFFFF"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="-5dp"
+                android:fontFamily="@font/inter_500"
+                android:text="hours"
+                android:textSize="14sp"
+                android:textColor="#FFFFFF"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/_rounded_blue_20dp"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/minutes_txt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/inter_700"
+                android:text="0"
+                android:textSize="40sp"
+                android:textColor="#FFFFFF"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="-5dp"
+                android:fontFamily="@font/inter_500"
+                android:text="minutes"
+                android:textSize="14sp"
+                android:textColor="#FFFFFF"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="15dp"
+        android:fontFamily="@font/inter_500"
+        android:text="Description"
+        android:textSize="14sp"
+        android:textColor="#4A4646"/>
+
+    <TextView
+        android:id="@+id/task_description_txt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginHorizontal="15dp"
+        android:fontFamily="@font/inter_400"
+        android:maxLines="5"
+        android:text=""
+        android:textSize="12sp"
+        android:textColor="#4A4646"/>
+
+    <RelativeLayout
+        android:id="@+id/finish_btn"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginHorizontal="15dp"
+        android:background="@drawable/_rounded_blue_10dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:fontFamily="@font/inter_500"
+            android:text="Finish"
+            android:textSize="14sp"
+            android:textColor="#FFFFFF"/>
+
+    </RelativeLayout>
+
+</LinearLayout>

@@ -101,6 +101,9 @@ class AddTaskAct : AppCompatActivity() {
 
         save_btn.setOnClickListener {
             if (verifyData()){
+                if (category == "Daily task"){
+                    startDate = endDate
+                }
                 val task = Task(0, task_title_edt.text.toString(), task_description_edt.text.toString(), category, startDate, endDate, 0)
                 task.id = dbHandler.addTask(task)
                 if (category == "Priority task"){

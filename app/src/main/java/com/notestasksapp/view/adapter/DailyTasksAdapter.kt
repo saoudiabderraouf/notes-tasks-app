@@ -13,6 +13,7 @@ import com.notestasksapp.R
 import com.notestasksapp.database.DBHandler
 import com.notestasksapp.helper.Helper
 import com.notestasksapp.model.Task
+import com.notestasksapp.view.ui.tasks.DailyTaskDetailsAct
 import com.notestasksapp.view.ui.tasks.PriorityTaskDetailsAct
 
 class DailyTasksAdapter(val context: Context, var data: ArrayList<Task>, var dbHandler: DBHandler) :
@@ -56,7 +57,7 @@ class DailyTasksAdapter(val context: Context, var data: ArrayList<Task>, var dbH
 
         holder.itemView.setOnClickListener {
             Helper.selected_task = data[pos]
-            context.startActivity(Intent(context, PriorityTaskDetailsAct::class.java))
+            context.startActivity(Intent(context, DailyTaskDetailsAct::class.java))
         }
 
     }
