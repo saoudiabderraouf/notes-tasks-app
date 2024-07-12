@@ -91,6 +91,14 @@ class PriorityTaskDetailsAct : AppCompatActivity() {
 
         task_progress_txt.text = "$progress%"
         task_progress.progress = progress
+
+        if (progress >= 100){
+            Helper.selected_task!!.finished = 1
+            dbHandler.updateTask(Helper.selected_task!!)
+        }else{
+            Helper.selected_task!!.finished = 0
+            dbHandler.updateTask(Helper.selected_task!!)
+        }
     }
 
     private fun getRemainingTime(targetTimeInMillis: Long, type: Int): String {

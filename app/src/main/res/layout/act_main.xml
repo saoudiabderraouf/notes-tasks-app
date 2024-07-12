@@ -60,17 +60,17 @@
             </RelativeLayout>
 
             <RelativeLayout
-                android:id="@+id/profile_btn"
+                android:id="@+id/statistics_btn"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1">
 
                 <ImageView
-                    android:id="@+id/profile_img"
+                    android:id="@+id/statistics_img"
                     android:layout_width="32dp"
                     android:layout_height="32dp"
                     android:layout_centerInParent="true"
-                    android:src="@drawable/profile_out"/>
+                    android:src="@drawable/statistics_out" />
 
             </RelativeLayout>
 
